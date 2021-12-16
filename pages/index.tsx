@@ -103,7 +103,7 @@ export default function Home() {
                     <Text>Paste this in the <b>third</b> code chunk on the faculty page.</Text>
                 </Alert>
 
-                <Button onClick={() => copy(convertFacultyToXml(selectedFaculty))}>Click to copy</Button>
+                <Button colorScheme="green" onClick={() => copy(convertFacultyToXml(selectedFaculty))}>Click to copy</Button>
             </Box>}
         </Box>
 

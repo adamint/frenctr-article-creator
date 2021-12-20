@@ -32,7 +32,7 @@ export function convertFacultyToXml(facultyMembers: FacultyMember[]): string {
                         src="${faculty.profilePictureUrl ?? "https://french.indiana.edu/_assets/no-photo-headshot.jpg"}"></a></figure>
             <div class="content">
                 <h1><a href="${faculty.linkToProfile}">${faculty.name}</a></h1>
-                <p class="title small">${faculty.title.replace("\n", "<br />")}</p>
+                <p class="title small">${faculty.title}</p>
                 <ul class="profile-contact">
                     ${(faculty.email != null) ? `<li class="icon-email" itemprop="email"><a rel="nofollow" href="mailto:${faculty.email}" class="email">${faculty.email}</a></li>` : ``}
                    ${(faculty.phoneNumber != null) ? `<li class="icon-phone" itemprop="telephone"><a href="tel:${faculty.phoneNumber.trim().split("").filter(char => "0123456789".includes(char)).join("")}" class="external">${faculty.phoneNumber}</a></li>` : ``}

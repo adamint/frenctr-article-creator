@@ -24,7 +24,7 @@ export enum IUSchool {
 
 export function convertFacultyToXml(facultyMembers: FacultyMember[]): string {
     return facultyMembers
-        .sort((a, b) => a.name.split(" ")[1].localeCompare(b.name.split(" ")[1]))
+        .sort((a, b) => getLastName(a.name).localeCompare(getLastName(b.name)))
         .map(faculty => stripNonValidXml(`<article class="profile item" data-filters="${IUSchool[faculty.school]};" itemscope="itemscope"
             itemtype="http://schema.org/Person">
             <figure class="media profile-thumb" itemscope="itemscope" itemtype="http://schema.org/ImageObject"><a
@@ -39,5 +39,10 @@ export function convertFacultyToXml(facultyMembers: FacultyMember[]): string {
                    ${(faculty.office != null) ? `<li class="icon-map-marker">${faculty.office}</li>` : ``}
                 </ul>
             </div>
-        </article>`)).join("<br />")
+        </article>`)).join("\n")
+}
+
+function getLastName(fullName: string): string {
+    const split = fullName.split(" ")
+    return split[split.length - 1]
 }

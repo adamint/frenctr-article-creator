@@ -23,7 +23,9 @@ export enum IUSchool {
 
 
 export function convertFacultyToXml(facultyMembers: FacultyMember[]): string {
-    return facultyMembers.map(faculty => stripNonValidXml(`<article class="profile item" data-filters="${faculty.school};" itemscope="itemscope"
+    return facultyMembers
+        .sort((a, b) => a.name.split(" ")[1].localeCompare(b.name.split(" ")[1]))
+        .map(faculty => stripNonValidXml(`<article class="profile item" data-filters="${IUSchool[faculty.school]};" itemscope="itemscope"
             itemtype="http://schema.org/Person">
             <figure class="media profile-thumb" itemscope="itemscope" itemtype="http://schema.org/ImageObject"><a
                     href="${faculty.linkToProfile}"><img alt="${faculty.name}" itemprop="image"
